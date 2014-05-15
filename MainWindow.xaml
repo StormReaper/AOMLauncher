@@ -1,0 +1,196 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:AOMLauncher.Properties" xmlns:awe="http://schemas.awesomium.com/winfx" x:Name="mainWindow" x:Class="AOMLauncher.MainWindow"
+        Title="AOM:EE Launcher" Height="460" Width="840"
+        WindowStyle="None"
+    WindowStartupLocation="CenterScreen"
+    AllowsTransparency="True"
+  Background="{x:Null}"
+    ResizeMode="NoResize" Closing="Window_Closing">
+    <Window.Resources>
+        <Style  TargetType="Button" x:Key="WindowButtons">
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="#FFFCD951" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg"
+                Background="{TemplateBinding Background}"
+                BorderThickness="1"
+                BorderBrush="#FFFCD951">
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                   Value="True">
+                                <Setter Property="Background"
+                    Value="#FFA38406"
+                    TargetName="bg" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="MainButtons">
+
+            <Setter Property="HorizontalAlignment"
+          Value="Center" />
+            <Setter Property="VerticalAlignment"
+          Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg"
+                Background="{TemplateBinding Background}"
+                BorderThickness="1"
+                BorderBrush="#FFFCD951">
+
+                            <ContentPresenter HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                   Value="True">
+                                <Setter Property="Background"
+                    Value="#FFED912E"
+                    TargetName="bg" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel x:Name="Main" Margin="21,6,19,5" MouseDown="Main_MouseDown" Loaded="Main_Loaded">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.074"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="0.499"/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="Images\background norse transparent.png" TileMode="FlipY" Stretch="Uniform" AlignmentY="Top" Viewport="0,0,32,32" ViewportUnits="Absolute" />
+            </StackPanel.Background>
+
+        </StackPanel>
+        <StackPanel Margin="249,2,249,330" Orientation="Horizontal" VerticalAlignment="Center">
+            <Image Source="Images\ui pregame aom titan logo left.png" Width="171" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDown="Main_MouseDown"/>
+            <Image Source="Images\ui pregame aom titan logo right.png" Width="171" VerticalAlignment="Center" HorizontalAlignment="Left" MouseDown="Main_MouseDown"/>
+        </StackPanel>
+        <Image Height="46" Source="Images\links.png" Margin="295,144,295,270" Width="250" MouseDown="Main_MouseDown"/>
+        <StackPanel Margin="44,190,44,218" Orientation="Horizontal" Height="51">
+            <Button x:Name="BtnAoe" Style="{StaticResource MainButtons}" Content="Age of Empires" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Click="btnAOE_Click" Margin="5"/>
+            <Button x:Name="BtnSanctuary" Style="{StaticResource MainButtons}" Content="RTS-Sanctuary" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Click="btnSanctuary_Click" Margin="5"/>
+            <Button x:Name="BtnHeaven" Style="{StaticResource MainButtons}" Content="AOM Heaven" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Click="btnHeaven_Click" Margin="5"/>
+            <Button x:Name="BtnSteam" Style="{StaticResource MainButtons}" Content="Steam Discussions" HorizontalAlignment="Left" VerticalAlignment="Top" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Width="178" Click="btnSteam_Click" Margin="5"/>
+
+        </StackPanel>
+        <StackPanel Margin="138,248,138,161" Orientation="Horizontal" Height="51" Width="564">
+            <Button x:Name="BtnWorkshop" Style="{StaticResource MainButtons}" Content="Steam Workshop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Click="btnWorkshop_Click" Margin="5"/>
+            <Button x:Name="BtnLeaderboards" Style="{StaticResource MainButtons}" Content="Leaderboards" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Click="btnLeaderboards_Click" Margin="5"/>
+            <Button x:Name="BtnRecordedGames" Style="{StaticResource MainButtons}" Content="Recorded Games" HorizontalAlignment="Left" VerticalAlignment="Top" Width="178" Height="41" FontFamily="Georgia" FontSize="16" FontWeight="Bold" Click="btnRecordedGames_Click" Margin="5"/>
+
+
+        </StackPanel>
+        <StackPanel Margin="205,299,205,112" Orientation="Horizontal" Width="430">
+            <CheckBox x:Name="CbAutoLaunch" IsChecked="{Binding AutoLaunch, Source={x:Static p:Settings.Default}}" Content="" FontFamily="Georgia" FontSize="20" Foreground="White" VerticalAlignment="Center" Checked="CbAutoLaunch_Changed" Unchecked="CbAutoLaunch_Changed" RenderTransformOrigin="0.5,0.5" Margin="10,18,10,17" HorizontalAlignment="Center" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="20" Height="20">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <Label Content="Automatic Launch" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0" VerticalAlignment="Center" FontFamily="Georgia" FontSize="16"/>
+            <ComboBox x:Name="CbDelay" SelectedIndex="{Binding Delay, Source={x:Static p:Settings.Default}}" VerticalAlignment="Center" Height="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="51" Margin="0,8,10,9">
+                <ListBoxItem Content="0"/>
+                <ListBoxItem Content="5"/>
+                <ListBoxItem Content="10"/>
+                <ListBoxItem Content="15"/>
+                <ListBoxItem Content="30"/>
+                <ListBoxItem Content="45"/>
+            </ComboBox>
+            <Label Content="Seconds" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,10,0" VerticalAlignment="Center" FontFamily="Georgia"/>
+            <CheckBox x:Name="CbNews" IsChecked="{Binding NewsPopup, Source={x:Static p:Settings.Default}}" Content="" FontFamily="Georgia" FontSize="20" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="10,0" HorizontalAlignment="Center" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="20" Height="20">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <Label Content="News Popup" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0" VerticalAlignment="Center" FontFamily="Georgia"/>
+        </StackPanel>
+        <StackPanel Margin="243,375,243,20" Orientation="Horizontal" Height="65" Width="344">
+            <Image Height="63" Source="Images\ornate left.png" Width="63" Margin="0" MouseDown="Main_MouseDown"/>
+            <Button x:Name="BtnLaunch" Style="{StaticResource MainButtons}" Content="Launch Now" HorizontalAlignment="Left" VerticalAlignment="Center" Width="178" Height="55" FontFamily="Georgia" FontSize="22" FontWeight="Bold" Click="btnLaunch_Click" Margin="20,0"/>
+            <Image Height="63" Source="Images\ornate right.png" Width="63" Margin="0" MouseDown="Main_MouseDown"/>
+        </StackPanel>
+        <Image Source="Images\ui border top middle.png" Height="16" Margin="35,3,34,441" Stretch="Fill" >
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Images\ui border top middle.png" TileMode="Tile"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image Source="Images\ui border top right corner.png" Width="64" Height="128" Margin="791,0,-15,332"/>
+        <Image Source="Images\ui border top left corner.png" Width="64" Height="128" Margin="0,0,776,332"/>
+        <Image Source="Images\ui border left middle.png" Width="32" Margin="15,-23,793,23"/>
+        <Image Source="Images\ui border right middle.png" Width="32" Margin="807,-20,1,20"/>
+        <Image Source="Images\ui border left middle.png" Width="32" Margin="15,233,806,-233"/>
+        <Image Source="Images\ui border right middle.png" Width="32" Margin="807,236,1,-236"/>
+        <Image Source="Images\ui border top middle.png" Height="16" Margin="42,443,28,1" Stretch="Fill" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Images\ui border top middle.png" TileMode="Tile"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image Source="Images\ui border top right corner.png" Width="64" Height="128" Margin="-1,332,777,0" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Source="Images\ui border top left corner.png" Width="64" Height="128" Margin="792,332,-16,0" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <StackPanel Margin="335,348,336,85" Width="170">
+            <Label x:Name="LblStartTime" Content="Starting in 10 seconds..." Foreground="#FFFCD951" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Georgia" FontSize="14"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="717,15,43,415" Height="30" Width="80">
+            <Button x:Name="BtnMinimize" Style="{StaticResource WindowButtons}" Content="0" Margin="5,0" FontFamily="Marlett" Width="20" Height="20" Click="btnMinimize_Click"/>
+            <Button x:Name="BtnHelp" Style="{StaticResource WindowButtons}" Content="s" Margin="0,0,5,0" FontFamily="Marlett" Width="20" Height="20" Click="btnHelp_Click"/>
+            <Button x:Name="BtnClose" Style="{StaticResource WindowButtons}" Content="r" Margin="0,0,5,0" FontFamily="Marlett" Width="20" Height="20" Click="btnClose_Click"/>
+        </StackPanel>
+        <Label x:Name="LblErrors" Content="Error" Foreground="#FFFCD951" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontFamily="Georgia" FontSize="14" Margin="44,348,44,86" Width="752"/>
+    </Grid>
+</Window>

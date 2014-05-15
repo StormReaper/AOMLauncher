@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AOMLauncher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AutoLaunch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Delay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="AOMHeaven" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://aom.heavengames.com/cgi-bin/forums/index.cgi</Value>
+    </Setting>
+    <Setting Name="RtsSanctuary" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.rts-sanctuary.com/RTS-Sanctuary/showforum=26</Value>
+    </Setting>
+    <Setting Name="AgeofEmpires" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.ageofempires.com/Forums/yaf_topics43_Age-of-Mythology--Extended-Edition.aspx</Value>
+    </Setting>
+    <Setting Name="SteamDiscussions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://steamcommunity.com/app/266840/discussions/</Value>
+    </Setting>
+    <Setting Name="SteamWorkshop" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://steamcommunity.com/workshop/browse/?appid=266840</Value>
+    </Setting>
+    <Setting Name="Leaderboards" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://steamcommunity.com/stats/266840/leaderboards/297085</Value>
+    </Setting>
+    <Setting Name="NewsPopup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
